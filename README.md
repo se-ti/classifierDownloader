@@ -6,4 +6,4 @@ Userscript для Chrome и Firefox, для скачивания частей [�
 ## Установка
 1. Установите менеджер user script'ов https://www.tampermonkey.net/
 2. Перейдите по ссылке https://github.com/se-ti/classifierDownloader/raw/master/downloader.user.js и согласитесь на установку скрипта 
-3. Ура! Можно идти читать отчеты :)
+3. Ура! Можно идти скачивать разделы классификатора :)
