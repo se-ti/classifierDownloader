@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         gDoc sheet as csv
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  download GoogleDoc sheets as csv with one click!
 // @author       Serge Titov
 // @match        https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ3X7Yj-45yzG9cn2V0MCV0N7cm6jqp6EgIgOhRquJ455z7LzC5RI2EYxHv67Eq7ocAYipBVpUSmp6*
@@ -28,6 +28,7 @@
     if (!m)
         return;
     const docId = m[1];
+    const sheetId = /gid=([^\/]*)/gi.exec(window.location.hash);
 
     var css = 'li[id^="sheet-button-"] a.dl-hover { visibility: hidden;  margin-left: 1ex; font-size: smaller;} li[id^="sheet-button-"]:hover a.dl-hover { visibility: visible; } ';
     var style = document.createElement('style');
@@ -38,18 +39,35 @@
     document.head.appendChild(style);
 
     const sheets = document.querySelectorAll('li[id^="sheet-button-"]');
-    Array.from(sheets).forEach(li => {
-        const m2 = /sheet-button-(\d+)/.exec(li.id);
-        if (!m2)
-            return;
+    if (sheets.length != 0)
+        Array.from(sheets).forEach(li => {
+            const m2 = /sheet-button-(\d+)/.exec(li.id);
+            if (!m2)
+                return;
 
-        const el = document.createElement('a');
-        el.innerText = '(csv)';
-        el.className = 'dl-hover';
-        el.href = dlUrl(docId, m2[1]);
+            const el = document.createElement('a');
+            el.innerText = '(csv)';
+            el.className = 'dl-hover';
+            el.href = dlUrl(docId, m2[1]);
 
-        li.appendChild(el);
-    });
+            li.appendChild(el);
+        });
+    else if (sheetId)
+    {
+        var cur = document.querySelector('td.switcherItemActive');
+        if (cur)
+        {
+            const el = document.createElement('a');
+            el.innerText = 'csv';
+            el.className = 'dl-hover';
+            el.style.marginLeft = '1.5ex';
+            el.href = dlUrl(docId, sheetId[1]);
+
+            cur.appendChild(el);
+        }
+    }
+    else
+      console.error('gDocSheet extension: no tab buttons found');
   }
 
   atGDoc();
