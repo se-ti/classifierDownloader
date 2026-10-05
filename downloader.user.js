@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         gDoc sheet as csv
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  download GoogleDoc sheets as csv with one click!
 // @author       Serge Titov
 // @match        https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ3X7Yj-45yzG9cn2V0MCV0N7cm6jqp6EgIgOhRquJ455z7LzC5RI2EYxHv67Eq7ocAYipBVpUSmp6*
 // @match        https://docs.google.com/spreadsheets/d/e/2PACX-1vScHwAGONYYwxgeGvPhNg_IkLN_FkAJw1vs2Pkp5F2sTp6m4H7ya_L5HG9Zwc_nso-Vbq67mY2UzBp0*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
-// @downloadURL https://github.com/se-ti/classifierDownloader/raw/master/downloader.user.js
-// @updateURL   https://github.com/se-ti/classifierDownloader/raw/master/downloader.user.js
+// @downloadURL https://github.com/se-ti/classifierDownloader/raw/main/downloader.user.js
+// @updateURL   https://github.com/se-ti/classifierDownloader/raw/main/downloader.user.js
 // @grant        none
 // ==/UserScript==
 
